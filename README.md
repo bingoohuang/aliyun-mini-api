@@ -6,3 +6,34 @@
 
 # aliyun-mini-api
 aliyun minimalism java rest api
+
+## RDS APIs
+
+```JAVA
+Rds rds = new Rds(new AccessToken("accessKeyId", "accessKeySecret"));
+String dbInstanceId = "dbInstanceId";
+
+// Create Database
+rds.invoke(new CreateDatabaseReq(dbInstanceId, "bingooDb"));
+
+// Delete Database
+rds.invoke(new DeleteDatabaseReq(dbInstanceId, "bingooDb"));
+
+// Describe attribute of an instance
+rds.invoke(new DescribeDBInstanceAttributeReq(dbInstanceId));
+
+// Describe single Database in an instance
+rds.invoke(new DescribeDatabaseReq(dbInstanceId, "bingooDb"));
+
+// Describe all Databases in an instance
+rds.invoke(new DescribeDatabasesReq(dbInstanceId));
+
+
+// Create Account
+rds.invoke(new CreateAccountReq(dbInstanceId, "accountName", ApiUtil.randomRdsString(16)));
+
+// Grant Account Privilege to a database
+rds.invoke(new GrantAccountPrivilegeReq(dbInstanceId, "accountName", "bingooDb"));
+
+
+```
