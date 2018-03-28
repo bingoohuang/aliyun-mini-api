@@ -33,13 +33,20 @@ public class ApiUtil {
 
     @SneakyThrows
     public static Object httpGet(String url, Req req) {
-        val obj = new URL(url);
-        val con = (HttpURLConnection) obj.openConnection();
+        log.info("GET URL: {}", url);
 
+        HttpURLConnection con = null;
         try {
+            val obj = new URL(url);
+            con = (HttpURLConnection) obj.openConnection();
+            con.setRequestProperty("Accept-Charset", "UTF-8");
+            HttpURLConnection.setFollowRedirects(true);
+            con.setConnectTimeout(3000);
+            con.setReadTimeout(3000);
+
             con.setRequestMethod("GET");
             int responseCode = con.getResponseCode();
-            log.info("GET URL: {}, Response Code: {} ", url, responseCode);
+            log.info("Response Code: {}", responseCode);
 
             val is = responseCode == 200 ? con.getInputStream() : con.getErrorStream();
             val in = new BufferedReader(new InputStreamReader(is));
@@ -54,10 +61,10 @@ public class ApiUtil {
 
             return req.buildRsp(responseCode, responseBody);
         } catch (Exception ex) {
-            log.error("GET URL: {}", url, ex);
+            log.error("GET URL error", ex);
             throw ex;
         } finally {
-            con.disconnect();
+            if (con != null) con.disconnect();
         }
     }
 

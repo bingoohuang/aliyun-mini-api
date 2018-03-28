@@ -12,7 +12,7 @@ public class GrantAccountPrivilegeReq extends Req {
     private final String dbName;
 
     @Override public void populate(Map<String, String> m) {
-        m.put("Action", "GrantAccountPrivilegeReq");
+        m.put("Action", "GrantAccountPrivilege");
         m.put("DBInstanceId", dbInstanceId);
         m.put("AccountName", accountName);
         m.put("DBName", dbName);
