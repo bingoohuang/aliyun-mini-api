@@ -13,16 +13,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 @Slf4j
 public class ApiUtil {
-
-    public static String httpGet(String accessKeySecret, LinkedHashMap<String, String> m) {
+    public static Object httpGet(String accessKeySecret, Map<String, String> m, Req req) {
         val url = ApiUtil.createUrl(m, accessKeySecret);
-        return ApiUtil.httpGet(url);
+        return ApiUtil.httpGet(url, req);
     }
 
     public static String createUrl(Map<String, String> m, String accessKeySecret) {
@@ -33,9 +31,8 @@ public class ApiUtil {
         return "https://rds.aliyuncs.com/?" + ApiUtil.createQueryString(m);
     }
 
-
     @SneakyThrows
-    public static String httpGet(String url) {
+    public static Object httpGet(String url, Req req) {
         val obj = new URL(url);
         val con = (HttpURLConnection) obj.openConnection();
 
@@ -55,7 +52,7 @@ public class ApiUtil {
             val responseBody = response.toString();
             log.info("Response Body: {}", responseBody);
 
-            return responseBody;
+            return req.buildRsp(responseCode, responseBody);
         } catch (Exception ex) {
             log.error("GET URL: {}", url, ex);
             throw ex;
@@ -63,7 +60,6 @@ public class ApiUtil {
             con.disconnect();
         }
     }
-
 
     public static String randomRdsString(int len) {
         val m = new StringBuilder(len);
@@ -79,7 +75,6 @@ public class ApiUtil {
 
         return m.toString();
     }
-
 
     @SneakyThrows
     public static String signString(String stringToSign, String accessKeySecret) {

@@ -1,19 +1,20 @@
 package com.github.bingoohuang.aliyun.mini.api;
 
-import lombok.val;
+import com.github.bingoohuang.aliyun.mini.api.rds.*;
 import org.junit.Test;
 
 public class RdsTest {
     @Test
     public void test() {
-        val accessKeyId = "accessKeyId";
-        val accessKeySecret = "accessKeySecret";
+        Rds rds = new Rds(new AccessToken("accessKeyId", "accessKeySecret"));
         String dbInstanceId = "dbInstanceId";
-        Rds.describeDBInstanceAttribute(accessKeyId, accessKeySecret);
-        Rds.describeDatabases(accessKeyId, accessKeySecret, dbInstanceId);
-        Rds.grantAccountPrivilege(accessKeyId, accessKeySecret, dbInstanceId, "accountName", "bingooDb");
-        Rds.createAccount(accessKeyId, accessKeySecret, dbInstanceId, "accountName", ApiUtil.randomRdsString(16));
-        Rds.createDatabase(accessKeyId, accessKeySecret, dbInstanceId, "bingooDb");
+        rds.invoke(new DescribeDBInstanceAttributeReq(dbInstanceId));
+        rds.invoke(new DescribeDatabaseReq(dbInstanceId, "bingooDb"));
+        rds.invoke(new DescribeDatabasesReq(dbInstanceId));
+        rds.invoke(new GrantAccountPrivilegeReq(dbInstanceId, "accountName", "bingooDb"));
+        rds.invoke(new CreateAccountReq(dbInstanceId, "accountName", ApiUtil.randomRdsString(16)));
+        rds.invoke(new CreateDatabaseReq(dbInstanceId, "bingooDb"));
+        rds.invoke(new DeleteDatabaseReq(dbInstanceId, "bingooDb"));
     }
 }
 
