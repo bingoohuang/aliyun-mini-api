@@ -1,4 +1,4 @@
-package com.github.bingoohuang.aliyun.mini.api;
+package com.github.bingoohuang.aliyun.mini.api.base;
 
 import java.util.Map;
 

@@ -1,5 +1,6 @@
-package com.github.bingoohuang.aliyun.mini.api;
+package com.github.bingoohuang.aliyun.mini.api.util;
 
+import com.github.bingoohuang.aliyun.mini.api.base.Req;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;

@@ -1,6 +1,8 @@
 package com.github.bingoohuang.aliyun.mini.api;
 
+import com.github.bingoohuang.aliyun.mini.api.base.AccessToken;
 import com.github.bingoohuang.aliyun.mini.api.rds.*;
+import com.github.bingoohuang.aliyun.mini.api.util.ApiUtil;
 import org.junit.Test;
 
 public class RdsTest {

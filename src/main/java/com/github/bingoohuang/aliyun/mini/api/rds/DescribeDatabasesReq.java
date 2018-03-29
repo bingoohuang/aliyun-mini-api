@@ -1,6 +1,6 @@
 package com.github.bingoohuang.aliyun.mini.api.rds;
 
-import com.github.bingoohuang.aliyun.mini.api.Req;
+import com.github.bingoohuang.aliyun.mini.api.base.Req;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 

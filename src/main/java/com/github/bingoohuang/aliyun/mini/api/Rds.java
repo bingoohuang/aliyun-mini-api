@@ -1,5 +1,8 @@
 package com.github.bingoohuang.aliyun.mini.api;
 
+import com.github.bingoohuang.aliyun.mini.api.base.AccessToken;
+import com.github.bingoohuang.aliyun.mini.api.base.Req;
+import com.github.bingoohuang.aliyun.mini.api.util.ApiUtil;
 import lombok.val;
 
 import java.text.SimpleDateFormat;
