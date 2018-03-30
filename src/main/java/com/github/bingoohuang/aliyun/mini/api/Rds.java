@@ -3,6 +3,7 @@ package com.github.bingoohuang.aliyun.mini.api;
 import com.github.bingoohuang.aliyun.mini.api.base.AccessToken;
 import com.github.bingoohuang.aliyun.mini.api.base.Req;
 import com.github.bingoohuang.aliyun.mini.api.util.ApiUtil;
+import com.github.bingoohuang.aliyun.mini.api.util.HttpGet;
 import lombok.val;
 
 import java.text.SimpleDateFormat;
@@ -21,10 +22,11 @@ public class Rds {
     public Object invoke(Req req) {
         val m = createCommonParameters();
         req.populate(m);
-        return ApiUtil.httpGet(accessToken.getAccessKeySecret(), m, req);
+        val url = "https://rds.aliyuncs.com/?" + ApiUtil.createUrl(m, accessToken.getAccessKeySecret());
+        return HttpGet.httpGet(url, req);
     }
 
-    public Map<String, String> createCommonParameters() {
+    private Map<String, String> createCommonParameters() {
         val m = new LinkedHashMap<String, String>();
         m.put("Format", "JSON");
         /*

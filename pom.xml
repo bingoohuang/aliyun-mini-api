@@ -44,6 +44,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.bingoohuang</groupId>
             <artifactId>java-utils</artifactId>
             <version>0.0.12</version>
