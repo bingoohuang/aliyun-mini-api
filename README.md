@@ -9,6 +9,8 @@ aliyun minimalism java rest api
 
 ## RDS APIs
 
+Full api document avaiable at: [RDS API](http://imgs-storage.cdn.aliyuncs.com/help/rds/RDS-API-Reference.pdf)
+
 ```JAVA
 Rds rds = new Rds(new AccessToken("accessKeyId", "accessKeySecret"));
 String dbInstanceId = "dbInstanceId";
