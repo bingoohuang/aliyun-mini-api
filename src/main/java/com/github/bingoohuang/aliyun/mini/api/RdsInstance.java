@@ -33,7 +33,7 @@ public class RdsInstance {
     }
 
     public String describeAccount(String accountName) {
-        return (String) rds.invoke(new DeleteAccountReq(dbInstanceId, accountName));
+        return (String) rds.invoke(new DescribeAccountReq(dbInstanceId, accountName));
     }
 
     public String grantAccountReadWritePrivilege(String accountName, String dbName) {
