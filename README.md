@@ -12,30 +12,29 @@ aliyun minimalism java rest api
 Full api document avaiable at: [RDS API](http://imgs-storage.cdn.aliyuncs.com/help/rds/RDS-API-Reference.pdf)
 
 ```JAVA
-Rds rds = new Rds(new AccessToken("accessKeyId", "accessKeySecret"));
-String dbInstanceId = "dbInstanceId";
+RdsInstance rds = new RdsInstance(new AccessToken("accessKeyId", "accessKeySecret"), "dbInstanceId");
 
 // Create Database
-rds.invoke(new CreateDatabaseReq(dbInstanceId, "bingooDb"));
+rds.createDatabase("bingooDb");
 
 // Delete Database
-rds.invoke(new DeleteDatabaseReq(dbInstanceId, "bingooDb"));
+rds.deleteDatabase("bingooDb");
 
 // Describe attribute of an instance
-rds.invoke(new DescribeDBInstanceAttributeReq(dbInstanceId));
+rds.describeDBInstanceAttribute();
 
 // Describe single Database in an instance
-rds.invoke(new DescribeDatabaseReq(dbInstanceId, "bingooDb"));
+rds.describeDatabase("bingooDb");
 
 // Describe all Databases in an instance
-rds.invoke(new DescribeDatabasesReq(dbInstanceId));
+rds.describeDatabases();
 
 
 // Create Account
-rds.invoke(new CreateAccountReq(dbInstanceId, "accountName", ApiUtil.randomRdsString(16)));
+rds.createAccount("accountName", ApiUtil.randomRdsString(16));
 
 // Grant Account Privilege to a database
-rds.invoke(new GrantAccountPrivilegeReq(dbInstanceId, "accountName", "bingooDb"));
+rds.grantAccountReadWritePrivilege("accountName", "bingooDb");
 
 
 ```

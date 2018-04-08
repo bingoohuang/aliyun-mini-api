@@ -6,7 +6,7 @@ import lombok.Value;
 import java.util.Map;
 
 @Value
-public class GrantAccountPrivilegeReq extends Req {
+public class GrantAccountReadWritePrivilegeReq extends Req {
     private final String dbInstanceId;
     private final String accountName;
     private final String dbName;
