@@ -20,21 +20,19 @@ rds.createDatabase("bingooDb");
 // Delete Database
 rds.deleteDatabase("bingooDb");
 
-// Describe attribute of an instance
-rds.describeDBInstanceAttribute();
+// Describe attribute of the instance
+rds.describeInstanceAttribute();
 
-// Describe single Database in an instance
+// Describe single Database in the instance
 rds.describeDatabase("bingooDb");
 
-// Describe all Databases in an instance
-rds.describeDatabases();
-
+// Describe all Databases in the instance
+rds.describeAllDatabases();
 
 // Create Account
 rds.createAccount("accountName", ApiUtil.randomRdsString(16));
 
 // Grant Account Privilege to a database
 rds.grantAccountReadWritePrivilege("accountName", "bingooDb");
-
 
 ```

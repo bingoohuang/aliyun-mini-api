@@ -24,6 +24,10 @@ public class RdsInstance {
         return (String) rds.invoke(new DescribeDatabaseReq(dbInstanceId, dbName));
     }
 
+    public String describeAllDatabases() {
+        return (String) rds.invoke(new DescribeAllDatabasesReq(dbInstanceId));
+    }
+
     public String deleteDatabase(String dbName) {
         return (String) rds.invoke(new DeleteDatabaseReq(dbInstanceId, dbName));
     }
@@ -43,5 +47,6 @@ public class RdsInstance {
     public String deleteAccount(String accountName) {
         return (String) rds.invoke(new DeleteAccountReq(dbInstanceId, accountName));
     }
+
 
 }

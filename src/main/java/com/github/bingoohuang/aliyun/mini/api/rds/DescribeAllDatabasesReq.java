@@ -7,7 +7,7 @@ import lombok.Value;
 import java.util.Map;
 
 @Value @AllArgsConstructor
-public class DescribeDatabasesReq extends Req {
+public class DescribeAllDatabasesReq extends Req {
     private final String dbInstanceId;
 
     @Override

@@ -14,6 +14,8 @@ public class RdsInstanceTest {
         String dbName = Str.random(10, Str.Format.LowerCaseLetters, Str.Format.Digits);
         rds.createDatabase(dbName);
 
+        rds.describeAllDatabases();
+
 //        while (true) {
 //            Thread.sleep(10000);
             /*String result = (String) */rds.describeDatabase(dbName);
