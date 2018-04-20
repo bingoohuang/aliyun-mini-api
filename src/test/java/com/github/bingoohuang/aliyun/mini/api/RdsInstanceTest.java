@@ -1,6 +1,7 @@
 package com.github.bingoohuang.aliyun.mini.api;
 
 import com.github.bingoohuang.aliyun.mini.api.base.AccessToken;
+import com.github.bingoohuang.aliyun.mini.api.rds.GrantAccountPrivilegeReq.AccountPrivilege;
 import com.github.bingoohuang.aliyun.mini.api.util.Str;
 import lombok.SneakyThrows;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class RdsInstanceTest {
 //            if (result != null && result.contains("Available")) break;
 //        }
 
-        rds.grantAccountReadWritePrivilege(accountName, dbName);
+        rds.grantAccountPrivilege(accountName, dbName, AccountPrivilege.ReadWrite);
 
         rds.deleteDatabase(dbName);
         rds.deleteAccount(accountName);

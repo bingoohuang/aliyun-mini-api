@@ -6,13 +6,14 @@ import lombok.Value;
 import java.util.Map;
 
 @Value
-public class DescribeAccountReq extends Req {
+public class DescribeDatabasesReq extends Req {
     private final String dbInstanceId;
-    private final String accountName;
+    private final String dbName;
 
-    @Override public void populate(Map<String, String> m) {
-        m.put("Action", "DescribeAccounts");
+    @Override
+    public void populate(Map<String, String> m) {
+        m.put("Action", "DescribeDatabases");
         m.put("DBInstanceId", dbInstanceId);
-        m.put("AccountName", accountName);
+        if (dbName != null) m.put("DBName", dbName);
     }
 }

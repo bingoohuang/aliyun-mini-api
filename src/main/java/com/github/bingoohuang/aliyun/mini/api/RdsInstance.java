@@ -21,11 +21,11 @@ public class RdsInstance {
     }
 
     public String describeDatabase(String dbName) {
-        return (String) rds.invoke(new DescribeDatabaseReq(dbInstanceId, dbName));
+        return (String) rds.invoke(new DescribeDatabasesReq(dbInstanceId, dbName));
     }
 
     public String describeAllDatabases() {
-        return (String) rds.invoke(new DescribeAllDatabasesReq(dbInstanceId));
+        return (String) rds.invoke(new DescribeDatabasesReq(dbInstanceId, null));
     }
 
     public String deleteDatabase(String dbName) {
@@ -37,11 +37,15 @@ public class RdsInstance {
     }
 
     public String describeAccount(String accountName) {
-        return (String) rds.invoke(new DescribeAccountReq(dbInstanceId, accountName));
+        return (String) rds.invoke(new DescribeAccountsReq(dbInstanceId, accountName));
     }
 
-    public String grantAccountReadWritePrivilege(String accountName, String dbName) {
-        return (String) rds.invoke(new GrantAccountReadWritePrivilegeReq(dbInstanceId, accountName, dbName));
+    public String describeAllAccounts() {
+        return (String) rds.invoke(new DescribeAccountsReq(dbInstanceId, null));
+    }
+
+    public String grantAccountPrivilege(String accountName, String dbName, GrantAccountPrivilegeReq.AccountPrivilege accountPrivilege) {
+        return (String) rds.invoke(new GrantAccountPrivilegeReq(dbInstanceId, accountName, dbName, accountPrivilege));
     }
 
     public String deleteAccount(String accountName) {

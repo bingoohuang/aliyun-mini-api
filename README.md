@@ -33,6 +33,6 @@ rds.describeAllDatabases();
 rds.createAccount("accountName", ApiUtil.randomRdsString(16));
 
 // Grant Account Privilege to a database
-rds.grantAccountReadWritePrivilege("accountName", "bingooDb");
+rds.grantAccountPrivilege("accountName", "bingooDb", AccountPrivilege.ReadWrite);
 
 ```

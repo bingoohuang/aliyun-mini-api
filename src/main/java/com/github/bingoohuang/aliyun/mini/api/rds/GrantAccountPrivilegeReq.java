@@ -6,16 +6,22 @@ import lombok.Value;
 import java.util.Map;
 
 @Value
-public class GrantAccountReadWritePrivilegeReq extends Req {
+public class GrantAccountPrivilegeReq extends Req {
     private final String dbInstanceId;
     private final String accountName;
     private final String dbName;
+    private final AccountPrivilege accountPrivilege;
 
-    @Override public void populate(Map<String, String> m) {
+    public enum AccountPrivilege {
+        ReadOnly, ReadWrite
+    }
+
+    @Override
+    public void populate(Map<String, String> m) {
         m.put("Action", "GrantAccountPrivilege");
         m.put("DBInstanceId", dbInstanceId);
         m.put("AccountName", accountName);
         m.put("DBName", dbName);
-        m.put("AccountPrivilege", "ReadWrite");
+        m.put("AccountPrivilege", accountPrivilege.toString());
     }
 }
